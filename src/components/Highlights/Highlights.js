@@ -41,7 +41,7 @@ const Highlights = ({ scrollRef }) => {
   ];
   return (
     <section id="highlights" ref={scrollRef}>
-      <div class="container">
+      <div className="container">
         <div id="highlights-intro">
           <h1>How Can I Help You?</h1>
           <p>

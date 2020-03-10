@@ -5,7 +5,7 @@ const Hero = ({ showNotif }) => {
   return (
     <div id="hero">
 
-      <div class="container">
+      <div className="container">
         <div id="hero-main" style={showNotif ? {} : { marginTop: "1.5em" }}>
           <div id="hero-logo">
             <img id="logo" src={logo} />

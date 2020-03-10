@@ -1,10 +1,10 @@
 import React from "react";
 import "./NewsLetter.scss";
-const NewsLetter = ({ showNewsLetter }) => {
+const NewsLetter = ({ showNewsLetter, toggleShowNewsLetter }) => {
   return (
     <div id="newsletter" style={{ display: showNewsLetter ? "block" : "none" }}>
       <div id="newsletter-head">
-        <button>x</button>
+        <button onClick={toggleShowNewsLetter}>x</button>
       </div>
       <div id="newsletter-content">
         <h2>Get latest updates in web technologies</h2>

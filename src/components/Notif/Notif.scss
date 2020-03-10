@@ -4,6 +4,7 @@
   background: $primary-bg;
   padding-top: 1em;
   padding-bottom: 1em;
+  
   position: fixed;
   top: 0px;
   left: 0;
@@ -12,7 +13,10 @@
   overflow:hidden;
 
   #notif-content {
+    padding-left:1em;
+    padding-right:1em;
     display: flex;
+    flex-wrap:wrap;
     justify-content: center;
     align-items: center;
     max-width: 720px;
@@ -20,9 +24,11 @@
     div {
       display: block;
       flex: 7;
+      // min-width:200px;
     }
     button {
       flex: 1;
+      padding:1em 1em;
     }
   }
 }

@@ -16,7 +16,7 @@
   #highlights-list {
     display: grid;
     grid-gap: 1.85em;
-    grid-template-columns: auto auto auto;
+    
 
     .highlight-item {
       display: flex;
@@ -37,5 +37,23 @@
         }
       }
     }
+  }
+}
+
+@media(min-width:960px) {
+  #highlights-list {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media (max-width:960px) {
+  #highlights-list {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width:480px) {
+  #highlights-list {
+    grid-template-columns: auto;
   }
 }

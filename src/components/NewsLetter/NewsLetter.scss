@@ -3,17 +3,39 @@
 @keyframes anim1 {
   0% {
     opacity: 0;
-    transform: translateX(-30rem);
+    transform: translateY(30rem);
+    display:block;
   }
   100% {
     opacity: 1;
     transform: scale(1);
+    display:block;
   }
 }
+
+@keyframes slidedown {
+  0% {
+    opacity:1;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity:0;
+    transform: translateY(30rem);
+  }
+  
+}
+
+.slidedown {
+  animation: slidedown .5s ease-out !important;
+  animation-fill-mode: forwards !important;
+}
 #newsletter {
+  display:none;
   // width: 35em;
   // background-color: pink;
   animation: anim1 .5s ease-in-out;
+  box-sizing: border-box;
   padding: 1em 1.5em 1.75em 1.5em;
   position: fixed;
   bottom: 0;

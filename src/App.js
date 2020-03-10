@@ -7,6 +7,7 @@ import { Hero, Notif, Highlights, Footer, NewsLetter } from "./components";
 function App() {
   const [showNotif, setShowNotif] = useState(true);
   const [showNewsLetter, setShowNewsLetter] = useState(false);
+  const [animateSlideDown,setAnimateSlideDown] = useState(false);
   const timer = useRef(null);
   const scrollRef = useRef();
   const toggleShowNotif = () => {
@@ -17,6 +18,7 @@ function App() {
     const futureDate = addMinutes(currentDate, 10);
     timer.current = futureDate;
     setShowNewsLetter(false);
+    setAnimateSlideDown(true);
   };
 
   useEffect(() => {
@@ -61,6 +63,7 @@ function App() {
       <NewsLetter
         showNewsLetter={showNewsLetter}
         toggleShowNewsLetter={toggleShowNewsLetter}
+        animateSlideDown={animateSlideDown}
       />
     </div>
   );

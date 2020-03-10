@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./highlights.scss";
 const Highlights = ({ scrollRef }) => {
   const mHighlights = [
@@ -41,28 +41,30 @@ const Highlights = ({ scrollRef }) => {
   ];
   return (
     <section id="highlights" ref={scrollRef}>
-      <div id="highlights-intro">
-        <h1>How Can I Help You?</h1>
-        <p>
-          Our work then targeted, best practices outcomes social innovation
-          synergy. Venture philanthropy, revolutionary inclusive policymaker
-          relief. User-centered program areas scale.
-        </p>
-      </div>
-      <div id="highlights-list">
-        {mHighlights.map((item, index) => (
-          <div className="highlight-item" key={index}>
-            <div className="highlight-head">
-              <span>{item.title}</span>
-              <span className="icon">
-                <i className={item.icon}></i>
-              </span>
+      <div class="container">
+        <div id="highlights-intro">
+          <h1>How Can I Help You?</h1>
+          <p>
+            Our work then targeted, best practices outcomes social innovation
+            synergy. Venture philanthropy, revolutionary inclusive policymaker
+            relief. User-centered program areas scale.
+          </p>
+        </div>
+        <div id="highlights-list">
+          {mHighlights.map((item, index) => (
+            <div className="highlight-item" key={index}>
+              <div className="highlight-head">
+                <span>{item.title}</span>
+                <span className="icon">
+                  <i className={item.icon}></i>
+                </span>
+              </div>
+              <div className="highlight-body">{item.content}</div>
             </div>
-            <div className="highlight-body">{item.content}</div>
-          </div>
-        ))}
-      </div>{" "}
-      {/* highlights-list */}
+          ))}
+        </div>
+        {/* highlights-list */}
+      </div>
     </section>
   );
 };

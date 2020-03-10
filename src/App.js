@@ -7,7 +7,7 @@ import { Hero, Notif, Highlights, Footer, NewsLetter } from "./components";
 function App() {
   const [showNotif, setShowNotif] = useState(true);
   const [showNewsLetter, setShowNewsLetter] = useState(false);
-  const timer = useRef();
+  const timer = useRef(null);
   const scrollRef = useRef();
   const toggleShowNotif = () => {
     setShowNotif(!showNotif);
@@ -15,55 +15,38 @@ function App() {
   const toggleShowNewsLetter = () => {
     const currentDate = new Date();
     const futureDate = addMinutes(currentDate, 10);
-    // setTimer(futureDate);
     timer.current = futureDate;
     setShowNewsLetter(false);
-    // observer.disconnect();
   };
-  const action = () => {
-    alert(timer.current);
-  }
-  const [observer, setObserver] = useState(
-    new IntersectionObserver(
+
+  useEffect(() => {
+    // observer.observe(scrollRef.current);
+    const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (entry.intersectionRatio >= 0.7) {
+          if (entry.intersectionRatio < 0.7) return;
+          if (!timer.current) {
             setShowNewsLetter(true);
-            action();
+
+          } else if (timer.current && new Date() > timer.current) {
+            setShowNewsLetter(true);
+            timer.current=null;
+
           }
+
         });
       },
       {
         threshold: 0.7,
         rootMargin: "1000px 0px 0px 1000px"
       }
-    )
-  );
-  useEffect(() => {
-    // observer.observe(scrollRef.current);
-     new IntersectionObserver(
-       entries => {
-         entries.forEach(entry => {
-           if (entry.intersectionRatio >= 0.7) {
-             setShowNewsLetter(true);
-             action();
-           }
-         });
-       },
-       {
-         threshold: 0.7,
-         rootMargin: "1000px 0px 0px 1000px"
-       }
-     );
-     observer.observe(scrollRef.current);
-     return function cleanup() {
-       observer.unobserve(scrollRef.current);
-       observer.disconnect();
-     };
+    );
+    observer.observe(scrollRef.current);
+
   }, [timer]);
 
   // useEffect(() => {
-    
+
   // },[timer]);
   return (
     <div id="app">

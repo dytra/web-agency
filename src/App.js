@@ -43,16 +43,12 @@ function App() {
       }
     );
 
-    // if (timer) {
-    //   observer.unobserve(scrollRef.current);
-    //   observer.disconnect();
-    //   alert("yolo");
-      // if (entry.intersectionRatio >= 0.7) {
-      //   alert("yolo");
-      // }
-    // } else {
-    //   observer.observe(scrollRef.current);
-    // }
+    if (timer) {
+      observer.unobserve(scrollRef.current);
+      observer.disconnect();
+    } else {
+      observer.observe(scrollRef.current);
+    }
   }, [timer]);
   return (
     <div id="app">

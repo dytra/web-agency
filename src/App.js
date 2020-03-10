@@ -5,6 +5,7 @@ import { Hero, Notif, Highlights, Footer, NewsLetter } from "./components";
 
 function App() {
   const [showNotif, setShowNotif] = useState(true);
+  const [showNewsLetter,setShowNewsLetter] = useState(false);
   const scrollRef = useRef();
   const toggleShowNotif = e => {
     e.preventDefault();
@@ -15,7 +16,7 @@ function App() {
       entries.forEach(entry => {
         console.log('startforeach',entry.intersectionRatio);
         if (entry.intersectionRatio >= .7) {
-          alert("yolo");
+         setShowNewsLetter(true);
         } else {
           console.log(entry.intersectionRatio);
         }
@@ -35,8 +36,8 @@ function App() {
       />
       <Hero showNotif={showNotif} />
       <Highlights scrollRef={scrollRef} />
-      <Footer/>
-      <NewsLetter />
+      <Footer />
+      <NewsLetter showNewsLetter={showNewsLetter} />
     </div>
   );
 }

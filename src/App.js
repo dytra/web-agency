@@ -7,7 +7,7 @@ import { Hero, Notif, Highlights, Footer, NewsLetter } from "./components";
 function App() {
   const [showNotif, setShowNotif] = useState(true);
   const [showNewsLetter, setShowNewsLetter] = useState(false);
-  const [timer, setTimer] = useState(null);
+  const timer = useRef();
   const scrollRef = useRef();
   const toggleShowNotif = () => {
     setShowNotif(!showNotif);
@@ -15,25 +15,21 @@ function App() {
   const toggleShowNewsLetter = () => {
     const currentDate = new Date();
     const futureDate = addMinutes(currentDate, 10);
-    setTimer(futureDate);
+    // setTimer(futureDate);
+    timer.current = futureDate;
     setShowNewsLetter(false);
+    // observer.disconnect();
   };
-  let observer = null;
-  useEffect(() => {
-    observer = new IntersectionObserver(
+  const action = () => {
+    alert(timer.current);
+  }
+  const [observer, setObserver] = useState(
+    new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (timer) {
-            observer.unobserve(scrollRef.current);
-            observer.disconnect();
-            alert("yolo");
-            // if (entry.intersectionRatio >= 0.7) {
-            //   alert("yolo");
-            // }
-          } else {
-            if (entry.intersectionRatio >= 0.7) {
-              setShowNewsLetter(true);
-            }
+          if (entry.intersectionRatio >= 0.7) {
+            setShowNewsLetter(true);
+            action();
           }
         });
       },
@@ -41,15 +37,34 @@ function App() {
         threshold: 0.7,
         rootMargin: "1000px 0px 0px 1000px"
       }
-    );
-
-    if (timer) {
-      observer.unobserve(scrollRef.current);
-      observer.disconnect();
-    } else {
-      observer.observe(scrollRef.current);
-    }
+    )
+  );
+  useEffect(() => {
+    // observer.observe(scrollRef.current);
+     new IntersectionObserver(
+       entries => {
+         entries.forEach(entry => {
+           if (entry.intersectionRatio >= 0.7) {
+             setShowNewsLetter(true);
+             action();
+           }
+         });
+       },
+       {
+         threshold: 0.7,
+         rootMargin: "1000px 0px 0px 1000px"
+       }
+     );
+     observer.observe(scrollRef.current);
+     return function cleanup() {
+       observer.unobserve(scrollRef.current);
+       observer.disconnect();
+     };
   }, [timer]);
+
+  // useEffect(() => {
+    
+  // },[timer]);
   return (
     <div id="app">
       <Notif

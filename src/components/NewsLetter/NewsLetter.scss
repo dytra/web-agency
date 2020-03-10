@@ -17,11 +17,13 @@
   0% {
     opacity:1;
     transform: scale(1);
+    display: block !important;
   }
 
   100% {
     opacity:0;
     transform: translateY(30rem);
+    display: block !important;
   }
   
 }
@@ -29,6 +31,7 @@
 .slidedown {
   animation: slidedown .5s ease-out !important;
   animation-fill-mode: forwards !important;
+  display: block !important;
 }
 #newsletter {
   display:none;

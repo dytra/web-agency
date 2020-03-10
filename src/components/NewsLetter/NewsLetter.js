@@ -2,7 +2,7 @@ import React from "react";
 import "./NewsLetter.scss";
 const NewsLetter = ({ showNewsLetter, toggleShowNewsLetter,animateSlideDown }) => {
   return (
-    <div id="newsletter"  style={{ display: showNewsLetter ? "block" : "block" }}  className={animateSlideDown ? "slidedown" : ""}>
+    <div id="newsletter" style={{display:showNewsLetter ? 'block' : 'none'}} className={animateSlideDown ? "slidedown" : ""}>
       <div id="newsletter-head">
         <button onClick={toggleShowNewsLetter}>x</button>
       </div>

@@ -11,7 +11,7 @@ const Hero = ({ showNotif }) => {
             <img id="logo" src={logo} />
           </div>
           <div id="hero-content">
-            <h1>Hello!</h1>
+            <h1>Hello, I'm Widhi Nugraha!</h1>
             <h3>Consult, Design, and Develop Websites</h3>
             <p>Have something great in mind? Feel free to contact me.</p>
             <p>I'll help you to make it happen.</p>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./NewsLetter.scss";
 const NewsLetter = ({ showNewsLetter }) => {
-  debugger;
   return (
     <div id="newsletter" style={{ display: showNewsLetter ? "block" : "none" }}>
       <div id="newsletter-head">

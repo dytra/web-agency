@@ -93,6 +93,7 @@
     position:relative;
     z-index:10;
     display: flex;
+    // flex-wrap:wrap;
     input {
       flex: 7;
       border: none;
@@ -107,6 +108,24 @@
       color: white;
       border-radius: 2px;
       font-weight: bold;
+      padding:.5em;
+    }
+  }
+}
+
+@media (max-width:420px) {
+  #newsletter {
+    form {
+      flex-direction:column;
+      flex-wrap:wrap;
+      input {
+        flex:1;
+        margin-right:0;
+        margin-bottom:.5em;
+      }
+      button {
+        flex:1;
+      }
     }
   }
 }

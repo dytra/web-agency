@@ -17,7 +17,7 @@ function App() {
     const currentDate = new Date();
     const futureDate = addMinutes(currentDate, 10);
     timer.current = futureDate;
-    document.cookie=`${futureDate}`;
+    document.cookie=`timer=;expires=${futureDate.toUTCString()}`;
     setShowNewsLetter(false);
     setAnimateSlideDown(true);
   };
@@ -27,16 +27,23 @@ function App() {
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
+          console.log("cookie is", document.cookie);
+          console.log("ratio is", entry.intersectionRatio);
           
           if (entry.intersectionRatio < 0.7) return;
           if (!document.cookie) {
+            console.log('showww newsletterrrr');
             setShowNewsLetter(true);
+            setAnimateSlideDown(false);
 
           } else if (document.cookie && new Date() > new Date(document.cookie)) {
+            console.log('cookiee resetts');
             setShowNewsLetter(true);
             setAnimateSlideDown(false);
             timer.current=null;
             document.cookie="";
+          } else {
+            console.log('cukizzzzz',document.cookie);
           }
 
         });

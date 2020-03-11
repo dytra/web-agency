@@ -40,7 +40,7 @@ function App() {
       },
       {
         threshold: 0.7,
-        rootMargin: "1000px 0px 0px 1000px"
+        rootMargin: "2000px 0px 0px 2000px"
       }
     );
     observer.observe(scrollRef.current);

@@ -8,7 +8,7 @@
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0rem);
     display:block;
   }
 }
@@ -34,10 +34,12 @@
   display: block !important;
 }
 #newsletter {
-  display:none;
+  // display:none;
   // width: 35em;
   // background-color: pink;
+  transform: translateY(30rem);
   animation: anim1 .5s ease-in-out;
+  animation-fill-mode: forwards !important;
   box-sizing: border-box;
   padding: 1em 1.5em 1.75em 1.5em;
   position: fixed;

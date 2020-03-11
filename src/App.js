@@ -26,12 +26,14 @@ function App() {
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
+          
           if (entry.intersectionRatio < 0.7) return;
           if (!timer.current) {
             setShowNewsLetter(true);
 
           } else if (timer.current && new Date() > timer.current) {
             setShowNewsLetter(true);
+            setAnimateSlideDown(false);
             timer.current=null;
 
           }

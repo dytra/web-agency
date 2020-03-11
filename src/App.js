@@ -17,6 +17,7 @@ function App() {
     const currentDate = new Date();
     const futureDate = addMinutes(currentDate, 10);
     timer.current = futureDate;
+    document.cookie=`${futureDate}`;
     setShowNewsLetter(false);
     setAnimateSlideDown(true);
   };
@@ -28,14 +29,14 @@ function App() {
         entries.forEach(entry => {
           
           if (entry.intersectionRatio < 0.7) return;
-          if (!timer.current) {
+          if (!document.cookie) {
             setShowNewsLetter(true);
 
-          } else if (timer.current && new Date() > timer.current) {
+          } else if (document.cookie && new Date() > new Date(document.cookie)) {
             setShowNewsLetter(true);
             setAnimateSlideDown(false);
             timer.current=null;
-
+            document.cookie=null;
           }
 
         });

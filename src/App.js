@@ -36,7 +36,7 @@ function App() {
             setShowNewsLetter(true);
             setAnimateSlideDown(false);
             timer.current=null;
-            document.cookie=null;
+            document.cookie="";
           }
 
         });

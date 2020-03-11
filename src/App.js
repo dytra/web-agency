@@ -15,7 +15,7 @@ function App() {
   };
   const toggleShowNewsLetter = () => {
     const currentDate = new Date();
-    const futureDate = addMinutes(currentDate, 1);
+    const futureDate = addMinutes(currentDate, 10);
     timer.current = futureDate;
     document.cookie=`timer=;expires=${futureDate.toUTCString()}`;
     setShowNewsLetter(false);
